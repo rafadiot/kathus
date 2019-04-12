@@ -1,6 +1,6 @@
 <?php
 
-use Kathus\Exceptions\ModuleNotFoundException;
+use Kathus\Exceptions\KathusNotFoundException;
 
 if (!function_exists('kathus')) {
     /**
@@ -27,7 +27,7 @@ if (!function_exists('kathus_path')) {
      * @param string $file
      * @param null $location
      * @return string
-     * @throws Kathus\Exceptions\ModuleNotFoundException
+     * @throws Kathus\Exceptions\KathusNotFoundException
      */
     function kathus_path($slug = null, $file = '', $location = null)
     {
@@ -68,10 +68,10 @@ if (!function_exists('kathus_class')) {
     function kathus_class($slug, $class, $location = null)
     {
         $location = $location ?: config('kathus.default_location');
-        $module = modules($location)->where('slug', $slug);
+        $module = kathus($location)->where('slug', $slug);
 
         if (is_null($module)) {
-            throw new ModuleNotFoundException($slug);
+            throw new KathusNotFoundException($slug);
         }
 
         $namespace = config("kathus.locations.$location.namespace") . $module['basename'];
