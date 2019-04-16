@@ -41,7 +41,7 @@ class ConsoleServiceProvider extends ServiceProvider
     protected function registerDisableCommand()
     {
         $this->app->singleton('command.module.disable', function () {
-            return new \Kathus\Console\Commands\ModuleDisableCommand();
+            return new \Kathus\Console\Commands\KathusDisableCommand();
         });
 
         $this->commands('command.module.disable');
@@ -53,7 +53,7 @@ class ConsoleServiceProvider extends ServiceProvider
     protected function registerEnableCommand()
     {
         $this->app->singleton('command.module.enable', function () {
-            return new \Kathus\Console\Commands\ModuleEnableCommand();
+            return new \Kathus\Console\Commands\KathusEnableCommand();
         });
 
         $this->commands('command.module.enable');
@@ -65,7 +65,7 @@ class ConsoleServiceProvider extends ServiceProvider
     protected function registerListCommand()
     {
         $this->app->singleton('command.module.list', function ($app) {
-            return new \Kathus\Console\Commands\ModuleListCommand($app['modules']);
+            return new \Kathus\Console\Commands\KathusListCommand($app['kathus']);
         });
 
         $this->commands('command.module.list');
@@ -77,7 +77,7 @@ class ConsoleServiceProvider extends ServiceProvider
     protected function registerMigrateCommand()
     {
         $this->app->singleton('command.module.migrate', function ($app) {
-            return new \Kathus\Console\Commands\ModuleMigrateCommand($app['migrator'], $app['modules']);
+            return new \Kathus\Console\Commands\KathusMigrateCommand($app['migrator'], $app['kathus']);
         });
 
         $this->commands('command.module.migrate');
@@ -89,7 +89,7 @@ class ConsoleServiceProvider extends ServiceProvider
     protected function registerMigrateRefreshCommand()
     {
         $this->app->singleton('command.module.migrate.refresh', function () {
-            return new \Kathus\Console\Commands\ModuleMigrateRefreshCommand();
+            return new \Kathus\Console\Commands\KathusMigrateRefreshCommand();
         });
 
         $this->commands('command.module.migrate.refresh');
@@ -101,7 +101,7 @@ class ConsoleServiceProvider extends ServiceProvider
     protected function registerMigrateResetCommand()
     {
         $this->app->singleton('command.module.migrate.reset', function ($app) {
-            return new \Kathus\Console\Commands\ModuleMigrateResetCommand($app['modules'], $app['files'], $app['migrator']);
+            return new \Kathus\Console\Commands\KathusMigrateResetCommand($app['kathus'], $app['files'], $app['migrator']);
         });
 
         $this->commands('command.module.migrate.reset');
@@ -118,7 +118,7 @@ class ConsoleServiceProvider extends ServiceProvider
 
             $migrator = new Migrator($table, $repository, $app['db'], $app['files']);
 
-            return new \Kathus\Console\Commands\ModuleMigrateRollbackCommand($migrator, $app['modules']);
+            return new \Kathus\Console\Commands\KathusMigrateRollbackCommand($migrator, $app['kathus']);
         });
 
         $this->commands('command.module.migrate.rollback');
@@ -130,7 +130,7 @@ class ConsoleServiceProvider extends ServiceProvider
     protected function registerOptimizeCommand()
     {
         $this->app->singleton('command.module.optimize', function () {
-            return new \Kathus\Console\Commands\ModuleOptimizeCommand();
+            return new \Kathus\Console\Commands\KathusOptimizeCommand();
         });
 
         $this->commands('command.module.optimize');
@@ -142,7 +142,7 @@ class ConsoleServiceProvider extends ServiceProvider
     protected function registerSeedCommand()
     {
         $this->app->singleton('command.module.seed', function ($app) {
-            return new \Kathus\Console\Commands\ModuleSeedCommand($app['modules']);
+            return new \Kathus\Console\Commands\KathusSeedCommand($app['kathus']);
         });
 
         $this->commands('command.module.seed');
