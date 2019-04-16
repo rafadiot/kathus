@@ -24,7 +24,7 @@ class GeneratorServiceProvider extends ServiceProvider
     public function register()
     {
         $generators = [
-            'command.make.module' => \Kathus\Console\Generators\MakeModuleCommand::class,
+            'command.make.module' => \Kathus\Console\Generators\MakeKathusCommand::class,
             'command.make.module.controller' => \Kathus\Console\Generators\MakeControllerCommand::class,
             'command.make.module.middleware' => \Kathus\Console\Generators\MakeMiddlewareCommand::class,
             'command.make.module.migration' => \Kathus\Console\Generators\MakeMigrationCommand::class,
