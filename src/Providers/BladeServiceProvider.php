@@ -26,7 +26,7 @@ class BladeServiceProvider extends ServiceProvider
     {
         $this->app->afterResolving('blade.compiler', function (BladeCompiler $bladeCompiler) {
             $bladeCompiler->directive('module', function ($slug) {
-                return "<?php if (Module::exists({$slug}) && Module::isEnabled({$slug})): ?>";
+                return "<?php if (Kathus::exists({$slug}) && Kathus::isEnabled({$slug})): ?>";
             });
 
             $bladeCompiler->directive('endmodule', function () {
