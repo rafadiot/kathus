@@ -8,13 +8,12 @@ trait MigrationTrait
      * Require (once) all migration files for the supplied module.
      *
      * @param $module
-     * @throws \Kathus\Exceptions\KathusNotFoundException
      */
     protected function requireMigrations($module)
     {
         $path = $this->getMigrationPath($module);
 
-        $migrations = $this->laravel['files']->glob($path.'*_*.php');
+        $migrations = $this->laravel['files']->glob($path . '*_*.php');
 
         foreach ($migrations as $migration) {
             $this->laravel['files']->requireOnce($migration);
@@ -25,8 +24,7 @@ trait MigrationTrait
      * Get migration directory path.
      *
      * @param $module
-     * @return string
-     * @throws \Kathus\Exceptions\KathusNotFoundException
+     * @return \Illuminate\Config\Repository|mixed|string
      */
     protected function getMigrationPath($module)
     {
