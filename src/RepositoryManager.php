@@ -83,6 +83,7 @@ class RepositoryManager
      * Autoload custom module files.
      *
      * @param $module
+     * @throws KathusNotFoundException
      */
     private function autoloadFiles($module)
     {

@@ -27,6 +27,7 @@ if (!function_exists('kathus_path')) {
      * @param string $file
      * @param null $location
      * @return \Illuminate\Config\Repository|mixed|string
+     * @throws KathusNotFoundException
      */
     function kathus_path($slug = null, $file = '', $location = null)
     {
@@ -47,7 +48,7 @@ if (!function_exists('kathus_path')) {
         $module = Kathus::location($location)->where('slug', $slug);
 
         if (is_null($module)) {
-            throw new ModuleNotFoundException($slug);
+            throw new KathusNotFoundException($slug);
         }
 
         return $modulesPath . '/' . $module['basename'] . $filePath;

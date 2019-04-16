@@ -65,7 +65,7 @@ class MakeKathusCommand extends Command
     /**
      * Execute the console command.
      *
-     * @return mixed
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public function handle()
     {
