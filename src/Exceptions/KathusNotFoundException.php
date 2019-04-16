@@ -6,6 +6,7 @@ class KathusNotFoundException extends \Exception
 {
     /**
      * KathusNotFoundException constructor.
+     *
      * @param $slug
      */
     public function __construct($slug)
