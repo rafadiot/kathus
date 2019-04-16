@@ -23,11 +23,10 @@ if (!function_exists('kathus_path')) {
     /**
      * Return the path to the given module file.
      *
-     * @param string $slug
+     * @param null $slug
      * @param string $file
      * @param null $location
-     * @return string
-     * @throws Kathus\Exceptions\KathusNotFoundException
+     * @return \Illuminate\Config\Repository|mixed|string
      */
     function kathus_path($slug = null, $file = '', $location = null)
     {
@@ -59,11 +58,11 @@ if (!function_exists('kathus_class')) {
     /**
      * Return the full path to the given module class.
      *
-     * @param string $slug
-     * @param string $class
-     * @param string $location
+     * @param $slug
+     * @param $class
+     * @param null $location
      * @return string
-     * @throws Kathus\Exceptions\ModuleNotFoundException
+     * @throws KathusNotFoundException
      */
     function kathus_class($slug, $class, $location = null)
     {
