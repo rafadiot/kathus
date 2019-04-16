@@ -3,7 +3,6 @@
 namespace Kathus;
 
 use Illuminate\Support\ServiceProvider;
-use Kathus\Contracts\Repository;
 use Kathus\Providers\BladeServiceProvider;
 use Kathus\Providers\ConsoleServiceProvider;
 use Kathus\Providers\GeneratorServiceProvider;
@@ -17,6 +16,8 @@ class KathusServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap the provided services.
+     *
+     * @return void
      */
     public function boot()
     {
@@ -29,6 +30,8 @@ class KathusServiceProvider extends ServiceProvider
 
     /**
      * Register the provided services.
+     *
+     * @return void
      */
     public function register()
     {
@@ -59,6 +62,7 @@ class KathusServiceProvider extends ServiceProvider
      * Register compilable code.
      *
      * @return array
+     * @throws Exceptions\KathusNotFoundException
      */
     public static function compiles()
     {

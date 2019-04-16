@@ -5,7 +5,7 @@ namespace Kathus;
 use Exception;
 use Illuminate\Foundation\Application;
 use Kathus\Repositories\Repository;
-use Kathus\Exceptions\ModuleNotFoundException;
+use Kathus\Exceptions\KathusNotFoundException;
 
 class RepositoryManager
 {
@@ -66,6 +66,7 @@ class RepositoryManager
      *
      * @param Repository $repository
      * @param $module
+     * @throws KathusNotFoundException
      */
     private function registerServiceProvider(Repository $repository, $module)
     {
@@ -82,7 +83,6 @@ class RepositoryManager
      * Autoload custom module files.
      *
      * @param $module
-     * @throws Exceptions\KathusNotFoundException
      */
     private function autoloadFiles($module)
     {
