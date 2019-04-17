@@ -2,7 +2,7 @@
 
 use Rafadiot\Kathus\Exceptions\KathusNotFoundException;
 
-if (!function_exists('modules')) {
+if (!function_exists('kathus')) {
     /**
      * Get modules repository.
      *
@@ -70,7 +70,7 @@ if (!function_exists('module_class')) {
     function module_class($slug, $class, $location = null)
     {
         $location = $location ?: config('kathus.default_location');
-        $module = modules($location)->where('slug', $slug);
+        $module = kathus($location)->where('slug', $slug);
 
         if (is_null($module)) {
             throw new KathusNotFoundException($slug);
