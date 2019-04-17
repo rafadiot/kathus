@@ -47,7 +47,6 @@ if (!function_exists('module_path')) {
         }
 
         $module = Kathus::location($location)->where('slug', $slug);
-        dd($module);
 
         if (is_null($module)) {
             throw new KathusNotFoundException($slug);

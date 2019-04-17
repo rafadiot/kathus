@@ -246,7 +246,7 @@ class LocalRepository extends Repository
             }
 
             if (!$module->has('order')) {
-                $module->put('order', 9001);
+                $module->put('order', 8);
             }
 
             return $module;
