@@ -32,7 +32,7 @@
             "src/Support/helpers.php"
         ],
         "psr-4": {
-            "Rafadiot\\Kathus": "src/"
+            "Rafadiot\\Kathus\\": "src/"
         }
     },
     "autoload-dev": {
