@@ -1,10 +1,10 @@
 <?php
 
-namespace Kathus\Console\Commands;
+namespace Rafadiot\Kathus\Console\Commands;
 
 use Illuminate\Console\Command;
-use Kathus\RepositoryManager;
-use Kathus\Repositories\Repository;
+use Rafadiot\Kathus\RepositoryManager;
+use Rafadiot\Kathus\Repositories\Repository;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 

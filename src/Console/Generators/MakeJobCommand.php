@@ -1,8 +1,8 @@
 <?php
 
-namespace Kathus\Console\Generators;
+namespace Rafadiot\Kathus\Console\Generators;
 
-use Kathus\Console\GeneratorCommand;
+use Rafadiot\Kathus\Console\GeneratorCommand;
 
 class MakeJobCommand extends GeneratorCommand
 {
@@ -44,10 +44,10 @@ class MakeJobCommand extends GeneratorCommand
      *
      * @param string $rootNamespace
      * @return string
-     * @throws \Kathus\Exceptions\KathusNotFoundException
+     * @throws \Rafadiot\Kathus\Exceptions\KathusNotFoundException
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return kathus_class($this->argument('slug'), 'Jobs');
+        return module_class($this->argument('slug'), 'Jobs');
     }
 }

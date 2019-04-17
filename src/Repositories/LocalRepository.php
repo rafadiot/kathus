@@ -1,6 +1,6 @@
 <?php
 
-namespace Kathus\Repositories;
+namespace Rafadiot\Kathus\Repositories;
 
 use Illuminate\Support\Str;
 

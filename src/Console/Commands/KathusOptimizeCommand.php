@@ -1,6 +1,6 @@
 <?php
 
-namespace Kathus\Console\Commands;
+namespace Rafadiot\Kathus\Console\Commands;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;

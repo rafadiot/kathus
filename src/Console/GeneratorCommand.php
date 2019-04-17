@@ -1,8 +1,8 @@
 <?php
 
-namespace Kathus\Console;
+namespace Rafadiot\Kathus\Console;
 
-use Kathus;
+use Rafadiot\Kathus;
 use Illuminate\Console\GeneratorCommand as LaravelGeneratorCommand;
 use Illuminate\Support\Str;
 
@@ -41,6 +41,7 @@ abstract class GeneratorCommand extends LaravelGeneratorCommand
      *
      * @param string $name
      * @return string
+     * @throws Kathus\Exceptions\KathusNotFoundException
      */
     protected function getPath($name)
     {
@@ -63,6 +64,6 @@ abstract class GeneratorCommand extends LaravelGeneratorCommand
             $newPath = implode('/', array_slice(explode('\\', $name), $key + 1));
         }
 
-        return kathus_path($slug, "$newPath.php", $location);
+        return module_path($slug, "$newPath.php", $location);
     }
 }

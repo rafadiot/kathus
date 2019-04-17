@@ -1,6 +1,6 @@
 <?php
 
-namespace Kathus\Exceptions;
+namespace Rafadiot\Kathus\Exceptions;
 
 class KathusNotFoundException extends \Exception
 {

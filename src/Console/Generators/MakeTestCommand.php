@@ -1,8 +1,8 @@
 <?php
 
-namespace Kathus\Console\Generators;
+namespace Rafadiot\Kathus\Console\Generators;
 
-use Kathus\Console\GeneratorCommand;
+use Rafadiot\Kathus\Console\GeneratorCommand;
 
 class MakeTestCommand extends GeneratorCommand
 {
@@ -45,10 +45,10 @@ class MakeTestCommand extends GeneratorCommand
      *
      * @param $rootNamespace
      * @return string
-     * @throws \Kathus\Exceptions\KathusNotFoundException
+     * @throws \Rafadiot\Kathus\Exceptions\KathusNotFoundException
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return kathus_class($this->argument('slug'), 'Tests', $this->option('location'));
+        return module_class($this->argument('slug'), 'Tests', $this->option('location'));
     }
 }

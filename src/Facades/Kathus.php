@@ -1,6 +1,6 @@
 <?php
 
-namespace Kathus\Facades;
+namespace Rafadiot\Kathus\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

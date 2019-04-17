@@ -1,8 +1,8 @@
 <?php
 
-namespace Kathus\Middleware;
+namespace Rafadiot\Kathus\Middleware;
 
-use Kathus\RepositoryManager;
+use Rafadiot\Kathus\RepositoryManager;
 use Closure;
 
 class IdentifyModule

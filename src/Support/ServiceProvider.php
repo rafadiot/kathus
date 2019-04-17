@@ -1,6 +1,6 @@
 <?php
 
-namespace Kathus\Support;
+namespace Rafadiot\Kathus\Support;
 
 use SplFileInfo;
 use Symfony\Component\Finder\Finder;

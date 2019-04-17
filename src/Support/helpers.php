@@ -1,13 +1,13 @@
 <?php
 
-use Kathus\Exceptions\KathusNotFoundException;
+use Rafadiot\Kathus\Exceptions\KathusNotFoundException;
 
-if (!function_exists('kathus')) {
+if (!function_exists('modules')) {
     /**
      * Get modules repository.
      *
      * @param string $location
-     * @return Kathus\RepositoryManager | Kathus\Repositories\Repository
+     * @return \Rafadiot\Kathus\RepositoryManager | \Rafadiot\Kathus\Repositories\Repository
      */
     function kathus($location = null)
     {
@@ -19,17 +19,18 @@ if (!function_exists('kathus')) {
     }
 }
 
-if (!function_exists('kathus_path')) {
+if (!function_exists('module_path')) {
     /**
      * Return the path to the given module file.
      *
-     * @param null $slug
+     * @param string $slug
      * @param string $file
+     *
      * @param null $location
-     * @return \Illuminate\Config\Repository|mixed|string
-     * @throws KathusNotFoundException
+     * @return string
+     * @throws \Rafadiot\Kathus\Exceptions\KathusNotFoundException
      */
-    function kathus_path($slug = null, $file = '', $location = null)
+    function module_path($slug = null, $file = '', $location = null)
     {
         $location = $location ?: config('kathus.default_location');
         $modulesPath = config("kathus.locations.$location.path");
@@ -46,6 +47,7 @@ if (!function_exists('kathus_path')) {
         }
 
         $module = Kathus::location($location)->where('slug', $slug);
+        dd($module);
 
         if (is_null($module)) {
             throw new KathusNotFoundException($slug);
@@ -55,20 +57,20 @@ if (!function_exists('kathus_path')) {
     }
 }
 
-if (!function_exists('kathus_class')) {
+if (!function_exists('module_class')) {
     /**
      * Return the full path to the given module class.
      *
-     * @param $slug
-     * @param $class
-     * @param null $location
+     * @param string $slug
+     * @param string $class
+     * @param string $location
      * @return string
-     * @throws KathusNotFoundException
+     * @throws \Rafadiot\Kathus\Exceptions\KathusNotFoundException
      */
-    function kathus_class($slug, $class, $location = null)
+    function module_class($slug, $class, $location = null)
     {
         $location = $location ?: config('kathus.default_location');
-        $module = kathus($location)->where('slug', $slug);
+        $module = modules($location)->where('slug', $slug);
 
         if (is_null($module)) {
             throw new KathusNotFoundException($slug);

@@ -1,9 +1,9 @@
 <?php
 
-namespace Kathus\Console\Commands;
+namespace Rafadiot\Kathus\Console\Commands;
 
 use Illuminate\Console\Command;
-use Kathus\Repositories\Repository;
+use Rafadiot\Kathus\Repositories\Repository;
 
 class KathusListCommand extends Command
 {

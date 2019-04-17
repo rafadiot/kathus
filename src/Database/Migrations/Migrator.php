@@ -1,6 +1,6 @@
 <?php
 
-namespace Kathus\Database\Migrations;
+namespace Rafadiot\Kathus\Database\Migrations;
 
 use Illuminate\Database\ConnectionResolverInterface as Resolver;
 use Illuminate\Database\Migrations\MigrationRepositoryInterface;

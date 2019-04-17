@@ -1,11 +1,11 @@
 <?php
 
-namespace Kathus;
+namespace Rafadiot\Kathus;
 
 use Illuminate\Support\ServiceProvider;
-use Kathus\Providers\BladeServiceProvider;
-use Kathus\Providers\ConsoleServiceProvider;
-use Kathus\Providers\GeneratorServiceProvider;
+use Rafadiot\Kathus\Providers\BladeServiceProvider;
+use Rafadiot\Kathus\Providers\ConsoleServiceProvider;
+use Rafadiot\Kathus\Providers\GeneratorServiceProvider;
 
 class KathusServiceProvider extends ServiceProvider
 {
@@ -70,7 +70,7 @@ class KathusServiceProvider extends ServiceProvider
 
         foreach (kathus()->repositories() as $repository) {
             foreach ($repository->all() as $module) {
-                $serviceProvider = kathus_class($module['slug'], 'Providers\\KathusServiceProvider', $repository->location);
+                $serviceProvider = module_class($module['slug'], 'Providers\\KathusServiceProvider', $repository->location);
 
                 if (class_exists($serviceProvider)) {
                     $files = array_merge($files, forward_static_call([$serviceProvider, 'compiles']));

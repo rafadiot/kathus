@@ -2,22 +2,22 @@
 
 namespace DummyNamespace\Providers;
 
-use Kathus\Support\ServiceProvider;
+use Rafadiot\Kathus\Support\ServiceProvider;
 
 class DummyProvider extends ServiceProvider
 {
     /**
      * Bootstrap the module services.
      *
-     * @return void
+     * @throws \Rafadiot\Kathus\Exceptions\KathusNotFoundException
      */
     public function boot()
     {
-        $this->loadTranslationsFrom(kathus_path('DummySlug', 'ResourcesLangMapping', 'DummyLocation'), 'DummySlug');
-        $this->loadViewsFrom(kathus_path('DummySlug', 'ResourcesViewsMapping', 'DummyLocation'), 'DummySlug');
-        $this->loadMigrationsFrom(kathus_path('DummySlug', 'DatabaseMigrationsMapping', 'DummyLocation'), 'DummySlug');
-        $this->loadConfigsFrom(kathus_path('DummySlug', 'ConfigMapping', 'DummyLocation'));
-        $this->loadFactoriesFrom(kathus_path('DummySlug', 'DatabaseFactoriesMapping', 'DummyLocation'));
+        $this->loadTranslationsFrom(module_path('DummySlug', 'ResourcesLangMapping', 'DummyLocation'), 'DummySlug');
+        $this->loadViewsFrom(module_path('DummySlug', 'ResourcesViewsMapping', 'DummyLocation'), 'DummySlug');
+        $this->loadMigrationsFrom(module_path('DummySlug', 'DatabaseMigrationsMapping', 'DummyLocation'), 'DummySlug');
+        $this->loadConfigsFrom(module_path('DummySlug', 'ConfigMapping', 'DummyLocation'));
+        $this->loadFactoriesFrom(module_path('DummySlug', 'DatabaseFactoriesMapping', 'DummyLocation'));
     }
 
     /**

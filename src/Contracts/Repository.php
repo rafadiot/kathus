@@ -1,6 +1,6 @@
 <?php
 
-namespace Kathus\Contracts;
+namespace Rafadiot\Kathus\Contracts;
 
 interface Repository
 {

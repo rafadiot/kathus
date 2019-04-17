@@ -1,6 +1,6 @@
 <?php
 
-namespace Kathus\Console\Generators;
+namespace Rafadiot\Kathus\Console\Generators;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
@@ -30,6 +30,7 @@ class MakeMigrationCommand extends Command
      * Execute the console command.
      *
      * @return int
+     * @throws \Rafadiot\Kathus\Exceptions\KathusNotFoundException
      */
     public function handle()
     {
@@ -44,7 +45,7 @@ class MakeMigrationCommand extends Command
         unset($arguments['slug']);
         unset($options['--location']);
 
-        $modulePath = kathus_path($this->argument('slug'), 'Database/Migrations', $this->option('location'));
+        $modulePath = module_path($this->argument('slug'), 'Database/Migrations', $this->option('location'));
         $options['--path'] = str_replace(realpath(base_path()), '', realpath($modulePath));
         $options['--path'] = ltrim($options['--path'], '/');
 

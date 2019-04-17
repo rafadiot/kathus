@@ -1,11 +1,11 @@
 <?php
 
-namespace Kathus;
+namespace Rafadiot\Kathus;
 
 use Exception;
 use Illuminate\Foundation\Application;
-use Kathus\Repositories\Repository;
-use Kathus\Exceptions\KathusNotFoundException;
+use Rafadiot\Kathus\Repositories\Repository;
+use Rafadiot\Kathus\Exceptions\KathusNotFoundException;
 
 class RepositoryManager
 {
@@ -72,7 +72,7 @@ class RepositoryManager
     {
         $location = $repository->location;
         $provider = config("kathus.location.$location.provider", 'Providers\\KathusServiceProvider');
-        $serviceProvider = kathus_class($module['slug'], $provider, $location);
+        $serviceProvider = module_class($module['slug'], $provider, $location);
 
         if (class_exists($serviceProvider)) {
             $this->app->register($serviceProvider);
@@ -89,7 +89,7 @@ class RepositoryManager
     {
         if (isset($module['autoload'])) {
             foreach ($module['autoload'] as $file) {
-                $path = kathus_path($module['slug'], $file);
+                $path = module_path($module['slug'], $file);
 
                 if (file_exists($path)) {
                     include $path;

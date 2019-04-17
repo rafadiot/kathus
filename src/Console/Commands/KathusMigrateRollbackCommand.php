@@ -1,13 +1,13 @@
 <?php
 
-namespace Kathus\Console\Commands;
+namespace Rafadiot\Kathus\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Console\ConfirmableTrait;
-use Kathus\RepositoryManager;
+use Rafadiot\Kathus\RepositoryManager;
 use Illuminate\Database\Migrations\Migrator;
-use Kathus\Traits\MigrationTrait;
-use Kathus\Repositories\Repository;
+use Rafadiot\Kathus\Traits\MigrationTrait;
+use Rafadiot\Kathus\Repositories\Repository;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
@@ -81,6 +81,7 @@ class KathusMigrateRollbackCommand extends Command
      *
      * @param Repository $repository
      * @return array
+     * @throws \Rafadiot\Kathus\Exceptions\KathusNotFoundException
      */
     protected function getMigrationPaths(Repository $repository)
     {
@@ -88,10 +89,10 @@ class KathusMigrateRollbackCommand extends Command
         $paths = [];
 
         if ($slug) {
-            $paths[] = kathus_path($slug, 'Database/Migrations', $repository->location);
+            $paths[] = module_path($slug, 'Database/Migrations', $repository->location);
         } else {
             foreach ($repository->all() as $module) {
-                $paths[] = kathus_path($module['slug'], 'Database/Migrations', $repository->location);
+                $paths[] = module_path($module['slug'], 'Database/Migrations', $repository->location);
             }
         }
 

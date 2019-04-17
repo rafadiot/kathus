@@ -1,13 +1,13 @@
 <?php
 
-namespace Kathus\Console\Commands;
+namespace Rafadiot\Kathus\Console\Commands;
 
 use Illuminate\Support\Arr;
 use Illuminate\Console\Command;
 use Illuminate\Console\ConfirmableTrait;
-use Kathus\RepositoryManager;
+use Rafadiot\Kathus\RepositoryManager;
 use Illuminate\Database\Migrations\Migrator;
-use Kathus\Repositories\Repository;
+use Rafadiot\Kathus\Repositories\Repository;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
@@ -103,7 +103,7 @@ class KathusMigrateCommand extends Command
     protected function executeMigrations($slug, $location)
     {
         if (kathus($location)->exists($slug)) {
-            $module = modules($location)->where('slug', $slug);
+            $module = kathus($location)->where('slug', $slug);
             $pretend = Arr::get($this->option(), 'pretend', false);
             $step = Arr::get($this->option(), 'step', false);
             $path = $this->getMigrationPath($slug);
@@ -126,12 +126,13 @@ class KathusMigrateCommand extends Command
     /**
      * Get migration directory path.
      *
-     * @param string $slug
+     * @param $slug
      * @return string
+     * @throws \Rafadiot\Kathus\Exceptions\KathusNotFoundException
      */
     protected function getMigrationPath($slug)
     {
-        return kathus_path($slug, 'Database/Migrations', $this->option('location'));
+        return module_path($slug, 'Database/Migrations', $this->option('location'));
     }
 
     /**

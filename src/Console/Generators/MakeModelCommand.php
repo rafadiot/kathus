@@ -1,9 +1,9 @@
 <?php
 
-namespace Kathus\Console\Generators;
+namespace Rafadiot\Kathus\Console\Generators;
 
 use Illuminate\Support\Str;
-use Kathus\Console\GeneratorCommand;
+use Rafadiot\Kathus\Console\GeneratorCommand;
 
 class MakeModelCommand extends GeneratorCommand
 {
@@ -69,10 +69,10 @@ class MakeModelCommand extends GeneratorCommand
      *
      * @param string $rootNamespace
      * @return string
-     * @throws \Kathus\Exceptions\KathusNotFoundException
+     * @throws \Rafadiot\Kathus\Exceptions\KathusNotFoundException
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return kathus_class($this->argument('slug'), 'Models');
+        return module_class($this->argument('slug'), 'Models');
     }
 }

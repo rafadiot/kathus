@@ -1,13 +1,13 @@
 <?php
 
-namespace Kathus\Console\Commands;
+namespace Rafadiot\Kathus\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Console\ConfirmableTrait;
-use Kathus\RepositoryManager;
+use Rafadiot\Kathus\RepositoryManager;
 use Illuminate\Database\Migrations\Migrator;
-use Kathus\Repositories\Repository;
+use Rafadiot\Kathus\Repositories\Repository;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
@@ -191,15 +191,16 @@ class KathusMigrateResetCommand extends Command
     }
 
     /**
-     * et migrations path.
+     * Get migrations path.
      *
      * @param $slug
      * @param Repository $repository
-     * @return \Illuminate\Config\Repository|mixed|string
+     * @return string
+     * @throws \Rafadiot\Kathus\Exceptions\KathusNotFoundException
      */
     protected function getMigrationPath($slug, Repository $repository)
     {
-        return kathus_path($slug, 'Database/Migrations', $repository->location);
+        return module_path($slug, 'Database/Migrations', $repository->location);
     }
 
     /**

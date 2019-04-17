@@ -1,6 +1,6 @@
 <?php
 
-namespace Kathus\Providers;
+namespace Rafadiot\Kathus\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;

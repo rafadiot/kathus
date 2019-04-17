@@ -1,8 +1,8 @@
 <?php
 
-namespace Kathus\Console\Generators;
+namespace Rafadiot\Kathus\Console\Generators;
 
-use Kathus\Console\GeneratorCommand;
+use Rafadiot\Kathus\Console\GeneratorCommand;
 
 class MakeSeederCommand extends GeneratorCommand
 {
@@ -45,10 +45,11 @@ class MakeSeederCommand extends GeneratorCommand
      *
      * @param string $name
      * @return string
+     * @throws \Rafadiot\Kathus\Exceptions\KathusNotFoundException
      */
     protected function getPath($name)
     {
-        return kathus_path($this->argument('slug'), 'Database/Seeds/' . $name . '.php', $this->option('location'));
+        return module_path($this->argument('slug'), 'Database/Seeds/' . $name . '.php', $this->option('location'));
     }
 
     /**
@@ -67,10 +68,10 @@ class MakeSeederCommand extends GeneratorCommand
      *
      * @param $name
      * @return string
-     * @throws \Kathus\Exceptions\KathusNotFoundException
+     * @throws \Rafadiot\Kathus\Exceptions\KathusNotFoundException
      */
     protected function getNamespace($name)
     {
-        return kathus_class($this->argument('slug'), 'Database\Seeds', $this->option('location'));
+        return module_class($this->argument('slug'), 'Database\Seeds', $this->option('location'));
     }
 }

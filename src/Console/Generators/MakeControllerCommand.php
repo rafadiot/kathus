@@ -1,9 +1,9 @@
 <?php
 
-namespace Kathus\Console\Generators;
+namespace Rafadiot\Kathus\Console\Generators;
 
 use Symfony\Component\Console\Input\InputOption;
-use Kathus\Console\GeneratorCommand;
+use Rafadiot\Kathus\Console\GeneratorCommand;
 
 class MakeControllerCommand extends GeneratorCommand
 {
@@ -51,10 +51,10 @@ class MakeControllerCommand extends GeneratorCommand
      *
      * @param string $rootNamespace
      * @return string
-     * @throws \Kathus\Exceptions\KathusNotFoundException
+     * @throws \Rafadiot\Kathus\Exceptions\KathusNotFoundException
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return kathus_class($this->argument('slug'), 'Http\\Controllers', $this->option('location'));
+        return module_class($this->argument('slug'), 'Http\\Controllers', $this->option('location'));
     }
 }

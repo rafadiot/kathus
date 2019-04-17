@@ -1,11 +1,11 @@
 <?php
 
-namespace Kathus\Console\Generators;
+namespace Rafadiot\Kathus\Console\Generators;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
-use Kathus\RepositoryManager;
+use Rafadiot\Kathus\RepositoryManager;
 use Symfony\Component\Console\Helper\ProgressBar;
 
 class MakeKathusCommand extends Command
@@ -158,6 +158,7 @@ class MakeKathusCommand extends Command
         if ($this->confirm('If the provided information is correct, type "yes" to generate.')) {
             $this->comment('Thanks! That\'s all we need.');
             $this->comment('Drink coffee while your module is generated.');
+
             $this->generate();
         } else {
             return $this->stepOne();
@@ -172,7 +173,7 @@ class MakeKathusCommand extends Command
     protected function generateModule()
     {
         $location = $this->container['location'];
-        $root = kathus_path(null, '', $location);
+        $root = module_path(null, '', $location);
         $manifest = config("kathus.locations.$location.manifest") ?: 'module.json';
         $provider = config("kathus.locations.$location.provider") ?: 'KathusServiceProvider';
 
@@ -180,11 +181,12 @@ class MakeKathusCommand extends Command
             $this->files->makeDirectory($root);
         }
 
-        $mapping = config("kathus.locations.$location.mapping");
-        $directory = kathus_path(null, $this->container['basename'], $location);
+        $mapping = config("modules.locations.$location.mapping");
+        $directory = module_path(null, $this->container['basename'], $location);
         $source = __DIR__ . '/../../../resources/stubs/module';
 
         $this->files->makeDirectory($directory);
+
         $sourceFiles = $this->files->allFiles($source, true);
 
         if (!empty($mapping)) {
@@ -202,12 +204,12 @@ class MakeKathusCommand extends Command
 
             $filePath = $directory . '/' . $subPath;
 
-            // If the file is module.json, replace it with the custom manifest file name
+            // if the file is module.json, replace it with the custom manifest file name
             if ($file->getFilename() === 'module.json' && $manifest) {
                 $filePath = str_replace('module.json', $manifest, $filePath);
             }
 
-            // If the file is ModuleServiceProvider.php, replace it with the custom provider file name
+            // if the file is ModuleServiceProvider.php, replace it with the custom provider file name
             if ($file->getFilename() === 'KathusServiceProvider.php') {
                 $filePath = str_replace('KathusServiceProvider', $provider, $filePath);
             }
@@ -222,10 +224,6 @@ class MakeKathusCommand extends Command
         }
     }
 
-    /**
-     * @param $contents
-     * @return mixed
-     */
     protected function replacePlaceholders($contents)
     {
         $location = $this->container['location'];

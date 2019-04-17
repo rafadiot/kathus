@@ -1,6 +1,6 @@
 <?php
 
-namespace Kathus\Traits;
+namespace Rafadiot\Kathus\Traits;
 
 trait MigrationTrait
 {
@@ -8,6 +8,7 @@ trait MigrationTrait
      * Require (once) all migration files for the supplied module.
      *
      * @param $module
+     * @throws \Rafadiot\Kathus\Exceptions\KathusNotFoundException
      */
     protected function requireMigrations($module)
     {
@@ -24,10 +25,11 @@ trait MigrationTrait
      * Get migration directory path.
      *
      * @param $module
-     * @return \Illuminate\Config\Repository|mixed|string
+     * @return string
+     * @throws \Rafadiot\Kathus\Exceptions\KathusNotFoundException
      */
     protected function getMigrationPath($module)
     {
-        return kathus_path($module, 'Database/Migrations');
+        return module_path($module, 'Database/Migrations');
     }
 }

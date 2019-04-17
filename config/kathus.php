@@ -38,7 +38,6 @@ return [
 
                 // Here you may configure the class mapping, effectively
                 // Customizing your generated default module structure.
-
                 'Config' => 'Config',
                 'Database/Factories' => 'Database/Factories',
                 'Database/Migrations' => 'Database/Migrations',
@@ -78,6 +77,6 @@ return [
      */
 
     'drivers' => [
-        'local' => 'Kathus\Repositories\LocalRepository',
+        'local' => 'Rafadiot\Kathus\Repositories\LocalRepository',
     ],
 ];

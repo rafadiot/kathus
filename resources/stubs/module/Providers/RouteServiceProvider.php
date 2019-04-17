@@ -52,7 +52,7 @@ class RouteServiceProvider extends ServiceProvider
             'middleware' => 'web',
             'namespace' => $this->namespace,
         ], function ($router) {
-            require kathus_path('DummySlug', 'RoutesMapping/web.php', 'DummyLocation');
+            require module_path('DummySlug', 'RoutesMapping/web.php', 'DummyLocation');
         });
     }
 
@@ -69,7 +69,7 @@ class RouteServiceProvider extends ServiceProvider
             'namespace' => $this->namespace,
             'prefix' => 'api',
         ], function ($router) {
-            require kathus_path('DummySlug', 'RoutesMapping/api.php', 'DummyLocation');
+            require module_path('DummySlug', 'RoutesMapping/api.php', 'DummyLocation');
         });
     }
 }

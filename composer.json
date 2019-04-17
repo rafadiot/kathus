@@ -1,11 +1,12 @@
 {
-    "name": "minhtuanchannhan/kathus",
+    "name": "rafadiot/kathus",
     "description": "A Laravel package to create multi modules.",
     "keywords": [
-        "minhtuanchannhan",
+        "rafadiot",
         "kathus",
         "kathus package",
-        "modules"
+        "modules",
+        "laravel-modules"
     ],
     "license": "MIT",
     "authors": [
@@ -31,12 +32,12 @@
             "src/Support/helpers.php"
         ],
         "psr-4": {
-            "Kathus": "src/"
+            "Rafadiot\\Kathus": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Kathus\\Tests\\": "tests"
+            "Rafadiot\\Kathus\\Tests\\": "tests"
         }
     },
     "suggest": {
@@ -44,10 +45,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Kathus\\KathusServiceProvider"
+                "Rafadiot\\Kathus\\KathusServiceProvider"
             ],
             "aliases": {
-                "Kathus": "Kathus\\Facades\\Kathus"
+                "Kathus": "Rafadiot\\Kathus\\Facades\\Kathus"
             }
         }
     }

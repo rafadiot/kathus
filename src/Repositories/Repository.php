@@ -1,10 +1,10 @@
 <?php
 
-namespace Kathus\Repositories;
+namespace Rafadiot\Kathus\Repositories;
 
 use Exception;
 use Illuminate\Support\Str;
-use Kathus\Contracts\Repository as RepositoryContract;
+use Rafadiot\Kathus\Contracts\Repository as RepositoryContract;
 use Illuminate\Config\Repository as Config;
 use Illuminate\Filesystem\Filesystem;
 

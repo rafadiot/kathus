@@ -1,6 +1,6 @@
 <?php
 
-namespace Kathus\Providers;
+namespace Rafadiot\Kathus\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -25,6 +25,6 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $default = config('kathus.default_driver');
         $driver = config('kathus.drivers.' . $default);
-        $this->app->bind('Kathus\Contracts\Repository', $driver);
+        $this->app->bind('Rafadiot\Kathus\Contracts\Repository', $driver);
     }
 }
