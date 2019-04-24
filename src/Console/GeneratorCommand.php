@@ -2,7 +2,7 @@
 
 namespace Rafadiot\Kathus\Console;
 
-use Rafadiot\Kathus;
+use Kathus;
 use Illuminate\Console\GeneratorCommand as LaravelGeneratorCommand;
 use Illuminate\Support\Str;
 
